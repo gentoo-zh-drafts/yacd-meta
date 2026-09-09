@@ -1,0 +1,18 @@
+
+name: Create pnpm node_modules dist
+on:
+  push:
+    tags:
+      - '**'
+
+jobs:
+  pnpm-dist:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Create pnpm node_modules dist
+        uses: gentoo-zh-drafts/pnpm-dist-action@v1
+        with:
+          dist-filename: yacd-meta-0.1.25
+
