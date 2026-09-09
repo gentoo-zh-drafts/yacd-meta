@@ -1,0 +1,17 @@
+name: Sync with upstream
+on:
+  schedule:
+    - cron: "25 * * * *"
+  workflow_dispatch:
+
+jobs:
+  sync-mirror:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Update mirror
+        uses: gentoo-zh-drafts/pnpm-dist-mirror-action@v1
+        with:
+          tag-filter: 'v[0-9]*'
+          token: ${{ secrets.PUSH_TOKEN }}
